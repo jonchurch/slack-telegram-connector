@@ -14,8 +14,7 @@ telegram_controller.startTicking()
 var slack_controller = {}//Botkit.slackbot({})
 
 
-var webserver = require('./components/express_webserver.js')(telegram_controller, slack_controller);
-console.log('webserver', webserver)
+var webserver = require(__dirname + '/components/express_webserver.js')(telegram_controller, slack_controller);
 
 
 // var telegram_bot = telegram_controller.spawn({});

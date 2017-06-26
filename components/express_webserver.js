@@ -1,5 +1,3 @@
-module.exports = function(controller) {
-  
   var express = require('express');
 var bodyParser = require('body-parser');
 var querystring = require('querystring');
@@ -27,10 +25,9 @@ module.exports = function(telegram_controller, slack_controller, bot) {
       require("./routes/" + file)(webserver, telegram_controller, slack_controller);
     });
 
-    telegram_controller.webserver = webserver;
+  telegram_controller.webserver = webserver;
   slack_controller.webserver = webserver
 
     return webserver;
 
-}
 }
