@@ -20,7 +20,7 @@ var webserver = require(__dirname + '/components/express_webserver.js')(telegram
 // var telegram_bot = telegram_controller.spawn({});
 request.post('https://api.telegram.org/bot' + process.env.telegram_token + '/setWebhook', {
                 form: {
-                    url: process.env.webhook_url + 'telegram/receive'
+                    url: process.env.webhook_url
                 }
             },
             function(err, res, body) {
