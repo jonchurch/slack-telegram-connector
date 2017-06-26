@@ -6,14 +6,17 @@ var debug = require('debug')('botkit:main');
 // var os = require('os');
 
 var telegram_controller = Botkit.telegrambot({
-    json_filestore: `./app/db`,
+    // json_filestore: `./app/db`,
     debug: true,
     access_token: process.env.telegram_token
 });
-
+telegram_controller.startTicking()
 var slack_controller = {}//Botkit.slackbot({})
 
-var webserver = require(__dirname + '/components/express_webserver.js')(telegram_controller, slack_controller);
+
+var webserver = require('./components/express_webserver.js')(telegram_controller, slack_controller);
+console.log('webserver', webserver)
+
 
 // var telegram_bot = telegram_controller.spawn({});
 request.post('https://api.telegram.org/bot' + process.env.telegram_token + '/setWebhook', {
@@ -35,3 +38,5 @@ var normalizedPath = require("path").join(__dirname, "skills");
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
   require("./skills/" + file)(telegram_controller, slack_controller);
 });
+
+

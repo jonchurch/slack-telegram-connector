@@ -17,7 +17,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
 
     webserver.listen(process.env.PORT || 3000, null, function() {
 
-        debug('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000);
+        console.log('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000);
 
     });
 
