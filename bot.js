@@ -6,6 +6,7 @@ var debug = require('debug')('botkit:main');
 // var os = require('os');
 
 var telegram_controller = Botkit.telegrambot({
+    json_filestore: `./app/db`,
     debug: true,
     access_token: process.env.telegram_token
 });
