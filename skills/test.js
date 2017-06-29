@@ -6,12 +6,20 @@ module.exports = function(telegram, slack) {
 })
  telegram.on('message_received', function(bot, message) {
    console.log(message)
+   var name = message.profile.fn + message.profile.ln
+   name = name.toLowerCase() 
    var slack_message = {
-     text: message.text,
-     username: message.profile.fn + message.profile.ln,
-     
+     // text: '',
+      "attachments": [
+        {
+            "fallback": "Required plain-text summary of the attachment.",
+            
+            // "author_name": message.profile.fn + message.profile.ln,
+            "title": name,
+            text: message.text,
+        }
+    ]
    }
-   slack_message.username = slack_message.username.toLowerCase()
    console.log(slack_message)
    
    
