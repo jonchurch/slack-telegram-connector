@@ -1,6 +1,6 @@
 var debug = require('debug')('botkit:oauth');
 
-module.exports = function(webserver, controller) {
+module.exports = function(webserver, telegram_controller, controller) {
 
     var handler = {
         login: function(req, res) {
