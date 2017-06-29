@@ -2,6 +2,7 @@
 var bodyParser = require('body-parser');
 var querystring = require('querystring');
 var debug = require('debug')('botkit:webserver');
+var request = require('request')
 
 module.exports = function(telegram_controller, slack_controller, bot) {
 
@@ -39,7 +40,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
   webserver.use(function(req, res, next) {
     if (req.body && req.body.event && req.body.event.user) {
       if (! req.body.event.username) {
-        slack_controller.
+        // request.post('https://slack.com/api/users.info', {token: })
       }
     }
   })

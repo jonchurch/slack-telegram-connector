@@ -29,7 +29,7 @@ module.exports = function(controller) {
                         if (err) {
                             debug('Error: could not save team record:', err);
                         } else {
-                            if (new_team) {
+                            if (! new_team) {
                                 controller.trigger('create_team', [testbot, team]);
                             } else {
                                 controller.trigger('update_team', [testbot, team]);
@@ -43,6 +43,9 @@ module.exports = function(controller) {
 
 
     controller.on('create_team', function(bot, team) {
+      bot.api.users.list({}, function(err, res) {
+        console.log(res)
+      })
 
         debug('Team created:', team);
 
