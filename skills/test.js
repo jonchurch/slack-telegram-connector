@@ -4,6 +4,7 @@ module.exports = function(telegram, slack) {
        url: process.env.slack_webhook_url
   }
 })
+  var telegramBot = telegram.spawn({})
  telegram.on('message_received', function(bot, message) {
    console.log(message)
    var name = message.profile.fn + message.profile.ln
@@ -29,7 +30,10 @@ module.exports = function(telegram, slack) {
  })
   
   
-  slack.on('message_received', function(bot, message) {
-    console.log('Slack ambient!')
+  slack.on('ambient', function(bot, message) {
+    console.log('Slack ambient!\n', message)
+    telegramBot.reply({
+      channel: '145647720' 
+    }, message.text)
   })
 }
