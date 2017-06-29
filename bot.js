@@ -11,7 +11,16 @@ var telegram_controller = Botkit.telegrambot({
     access_token: process.env.telegram_token
 });
 telegram_controller.startTicking()
-var slack_controller = {}//Botkit.slackbot({})
+
+var slack_options = {
+    clientId: process.env.slack_client_id,
+    clientSecret: process.env.slack_client_secret,
+    // debug: true,
+    incoming_webhook: process.env.slack_webhook_url,
+    scopes: ['bot'],
+};
+var slack_controller = Botkit.slackbot(slack_options)
+slack_controller.startTicking()
 
 
 var webserver = require(__dirname + '/components/express_webserver.js')(telegram_controller, slack_controller);
