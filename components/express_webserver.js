@@ -18,6 +18,20 @@ module.exports = function(telegram_controller, slack_controller, bot) {
         console.log('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000);
 
     });
+  webserver.use(function(req, res) {
+    if (req.body && req.body.event && req.body.event.user) {
+      slack_controller.storage.users.get(req.body.event.user, function(err, user) {
+        if (err) {
+          console.log('storage error getting user!')
+        } else if (!user) {
+          //api call to get user from slack
+          
+        } else {
+          console.log('user' ,user)
+        }
+      })
+    }
+  })
 
     // import all the pre-defined routes that are present in /components/routes
     var normalizedPath = require("path").join(__dirname, "routes");
