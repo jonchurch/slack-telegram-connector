@@ -29,7 +29,7 @@ module.exports = function(telegram, slack) {
  })
   
   
-  slack.hears('(.*)', 'message_received', function(bot, message) {
+  slack.on('message_received', function(bot, message) {
     console.log('Slack ambient!')
   })
 }

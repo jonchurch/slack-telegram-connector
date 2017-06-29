@@ -23,42 +23,21 @@ module.exports = function(controller) {
                     name: payload.identity.team,
                 };
                 var new_team= true;
+              var testbot = controller.spawn(team)
+              
+              controller.storage.teams.save(team, function(err, id) {
+                        if (err) {
+                            debug('Error: could not save team record:', err);
+                        } else {
+                            if (new_team) {
+                                controller.trigger('create_team', [testbot, team]);
+                            } else {
+                                controller.trigger('update_team', [testbot, team]);
+                            }
+                        }
+                    });
             }
 
-            team.bot = {
-                token: null,//payload.bot.bot_access_token,
-                user_id: null,//payload.bot.bot_user_id,
-                createdBy: payload.identity.user_id,
-                app_token: payload.access_token,
-            };
-
-//             var testbot = controller.spawn(team.bot);
-
-//             testbot.api.auth.test({}, function(err, bot_auth) {
-//                 if (err) {
-//                     debug('Error: could not authenticate bot user', err);
-//                 } else {
-//                     team.bot.name = bot_auth.user;
-
-//                     // add in info that is expected by Botkit
-//                     testbot.identity = bot_auth;
-//                     testbot.team_info = team;
-
-//                     // Replace this with your own database!
-
-//                     controller.storage.teams.save(team, function(err, id) {
-//                         if (err) {
-//                             debug('Error: could not save team record:', err);
-//                         } else {
-//                             if (new_team) {
-//                                 controller.trigger('create_team', [testbot, team]);
-//                             } else {
-//                                 controller.trigger('update_team', [testbot, team]);
-//                             }
-//                         }
-//                     });
-//                 }
-//             });
         });
     });
 

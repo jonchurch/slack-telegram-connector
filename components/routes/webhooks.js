@@ -28,7 +28,7 @@ module.exports = function(webserver, telegram_controller, slack_controller) {
   
   webserver.post('/slack/receive', function(req, res) {
     res.status(200)  
-    res.send('ok')
+    // res.send('ok')
     // console.log('REQ BODY\n',req.body)
     slack_controller.handleWebhookPayload(req, res)
   })
