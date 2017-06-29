@@ -7,6 +7,7 @@ module.exports = function(webserver, telegram_controller, controller) {
             res.redirect(controller.getAuthorizeURL());
         },
         oauth: function(req, res) {
+          console.log('GOT OAUTH!!!!!')
             var code = req.query.code;
             var state = req.query.state;
 

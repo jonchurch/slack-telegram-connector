@@ -24,6 +24,9 @@ var slack_options = {
 var slack_controller = Botkit.slackbot(slack_options)
 slack_controller.startTicking()
 
+// Set up a simple storage backend for keeping a record of our
+// slack app data
+require(__dirname + '/components/user_registration.js')(slack_controller);
 
 var webserver = require(__dirname + '/components/express_webserver.js')(telegram_controller, slack_controller);
 
