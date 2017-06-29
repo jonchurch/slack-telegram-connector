@@ -28,13 +28,13 @@ module.exports = function(telegram_controller, slack_controller, bot) {
           next(err)
         } else if (!user) {
           //api call to get user from slack
-          next()
         } else {
           console.log('=========user' ,user)
         }
-        next()
+
       })
     }
+    next()
   })
   
   webserver.use(function(req, res, next) {
@@ -43,6 +43,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
         // request.post('https://slack.com/api/users.info', {token: })
       }
     }
+    next()
   })
 
     // import all the pre-defined routes that are present in /components/routes
