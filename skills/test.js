@@ -28,4 +28,8 @@ module.exports = function(telegram, slack) {
    })
  })
   
+  
+  slack.on('ambient', function(bot, message) {
+    console.log('Slack ambient!')
+  })
 }
