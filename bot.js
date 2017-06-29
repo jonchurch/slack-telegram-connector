@@ -23,6 +23,13 @@ var slack_options = {
 };
 var slack_controller = Botkit.slackbot(slack_options)
 slack_controller.startTicking()
+slack_controller.storage.users.save({id: 'test'}, function(err, res) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('save res ', res)
+  }
+})
 
 // Set up a simple storage backend for keeping a record of our
 // slack app data

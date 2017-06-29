@@ -27,12 +27,20 @@ module.exports = function(telegram_controller, slack_controller, bot) {
           next(err)
         } else if (!user) {
           //api call to get user from slack
-          
+          next()
         } else {
           console.log('=========user' ,user)
         }
         next()
       })
+    }
+  })
+  
+  webserver.use(function(req, res, next) {
+    if (req.body && req.body.event && req.body.event.user) {
+      if (! req.body.event.username) {
+        slack_controller.
+      }
     }
   })
 
