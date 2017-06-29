@@ -15,7 +15,7 @@ module.exports = function(controller) {
             }
 
             var new_team = false;
-            if (!team) {
+            if (team) {
                 team = {
                     id: payload.identity.team_id,
                     createdBy: payload.identity.user_id,
@@ -39,6 +39,7 @@ module.exports = function(controller) {
                         }
                     });
             }
+
 
         });
     });
