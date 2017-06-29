@@ -5,8 +5,15 @@ module.exports = function(telegram, slack) {
   }
 })
  telegram.on('message_received', function(bot, message) {
+   console.log(message)
+   var slack_message = {
+     text: message.text,
+     
+   }
    
-   slackBot.sendWebhook(, function(err, res) {
+   
+   
+   slackBot.sendWebhook({text: 'Hello'}, function(err, res) {
      if (err) console.log('Uh oh!\n', err)
    })
  })
