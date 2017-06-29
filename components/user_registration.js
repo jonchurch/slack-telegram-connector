@@ -26,39 +26,39 @@ module.exports = function(controller) {
             }
 
             team.bot = {
-                token: payload.bot.bot_access_token,
-                user_id: payload.bot.bot_user_id,
+                token: null,//payload.bot.bot_access_token,
+                user_id: null,//payload.bot.bot_user_id,
                 createdBy: payload.identity.user_id,
                 app_token: payload.access_token,
             };
 
-            var testbot = controller.spawn(team.bot);
+//             var testbot = controller.spawn(team.bot);
 
-            testbot.api.auth.test({}, function(err, bot_auth) {
-                if (err) {
-                    debug('Error: could not authenticate bot user', err);
-                } else {
-                    team.bot.name = bot_auth.user;
+//             testbot.api.auth.test({}, function(err, bot_auth) {
+//                 if (err) {
+//                     debug('Error: could not authenticate bot user', err);
+//                 } else {
+//                     team.bot.name = bot_auth.user;
 
-                    // add in info that is expected by Botkit
-                    testbot.identity = bot_auth;
-                    testbot.team_info = team;
+//                     // add in info that is expected by Botkit
+//                     testbot.identity = bot_auth;
+//                     testbot.team_info = team;
 
-                    // Replace this with your own database!
+//                     // Replace this with your own database!
 
-                    controller.storage.teams.save(team, function(err, id) {
-                        if (err) {
-                            debug('Error: could not save team record:', err);
-                        } else {
-                            if (new_team) {
-                                controller.trigger('create_team', [testbot, team]);
-                            } else {
-                                controller.trigger('update_team', [testbot, team]);
-                            }
-                        }
-                    });
-                }
-            });
+//                     controller.storage.teams.save(team, function(err, id) {
+//                         if (err) {
+//                             debug('Error: could not save team record:', err);
+//                         } else {
+//                             if (new_team) {
+//                                 controller.trigger('create_team', [testbot, team]);
+//                             } else {
+//                                 controller.trigger('update_team', [testbot, team]);
+//                             }
+//                         }
+//                     });
+//                 }
+//             });
         });
     });
 
@@ -66,9 +66,6 @@ module.exports = function(controller) {
     controller.on('create_team', function(bot, team) {
 
         debug('Team created:', team);
-
-        // Trigger an event that will establish an RTM connection for this bot
-        controller.trigger('rtm:start', [bot.config]);
 
         // Trigger an event that will cause this team to receive onboarding messages
         controller.trigger('onboard', [bot, team]);
@@ -80,7 +77,7 @@ module.exports = function(controller) {
 
         debug('Team updated:', team);
         // Trigger an event that will establish an RTM connection for this bot
-        controller.trigger('rtm:start', [bot]);
+        // controller.trigger('rtm:start', [bot]);
 
     });
 
