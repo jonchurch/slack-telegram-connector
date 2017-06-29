@@ -20,7 +20,7 @@ module.exports = function(telegram, slack) {
         }
     ]
    }
-   console.log(slack_message)
+   // console.log(slack_message)
    
    
    slackBot.sendWebhook(slack_message, function(err, res) {
@@ -29,7 +29,7 @@ module.exports = function(telegram, slack) {
  })
   
   
-  slack.on('ambient', function(bot, message) {
+  slack.on('message_received', function(bot, message) {
     console.log('Slack ambient!')
   })
 }
