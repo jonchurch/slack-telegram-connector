@@ -21,6 +21,7 @@ module.exports = function(controller) {
                     createdBy: payload.identity.user_id,
                     url: payload.identity.url,
                     name: payload.identity.team,
+                    access_token: payload.access_token
                 };
                 var new_team= true;
               var testbot = controller.spawn(team)

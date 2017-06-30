@@ -45,7 +45,6 @@ module.exports = function(telegram_controller, slack_controller, bot) {
   webserver.use(function(req, res, next) {
     if (req.body && req.body.event && req.body.event.user) {
       if (! req.body.event.username) {
-        // request.post('https://slack.com/api/users.info', {token: })
       }
     }
     next()

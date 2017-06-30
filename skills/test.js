@@ -36,6 +36,19 @@ module.exports = function(telegram, slack) {
   
   slack.on('ambient', function(bot, message) {
     // I need to get slack user name to post into telegram
+    console.log(message)
+    if (message.username) {
+      // slack.storage.teams.get(message.team)
+      
+      bot.api.users.info({token: slack.config.access_token}, function(err, res) {
+        if (err) {
+          console.log('err getting user info:', slack.config)
+        } else {
+          console.log(res)
+        }
+      })
+    }
+    
     var tel_message = {
       channel: process.env.telegram_channel,
       text: '*' + message.username + '*' + ': ' + message.text,
