@@ -22,7 +22,8 @@
     "botkit-studio-sdk": "^1.0.2",
     "ws": "^3.0.0",
     "https-proxy-agent": "^2.0.0",
-    "back": "^1.0.1"
+    "back": "^1.0.1",
+    "emoji-name-map": "^1.2.4"
   },
   "engines": {
     "node": "8.1.x"
