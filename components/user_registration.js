@@ -25,7 +25,7 @@ module.exports = function(controller) {
                     access_token: payload.access_token
                 };
               
-                var new_team= true;
+                 new_team= true;
             }
               var testbot = controller.spawn(team)
               console.log('payload.token: ',payload.access_token)

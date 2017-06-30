@@ -52,11 +52,12 @@ module.exports = function(telegram, slack) {
         if (err) {
           console.log('err getting user info:', slack.config)
         } else {
+          console.log('USER INFO REQUEST', res)
           var user = {
-                      id: res.id,
-                      username: res.name,
-                      is_bot: res.is_bot,
-                      real_name: res.profile.real_name
+                      id: res.user.id,
+                      username: res.user.name,
+                      is_bot: res.user.is_bot,
+                      real_name: res.user.profile.real_name
                     }
           var tel_message = {
       channel: process.env.telegram_channel,
