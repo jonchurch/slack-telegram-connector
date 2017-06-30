@@ -43,11 +43,11 @@ module.exports = function(telegram, slack) {
           console.log('err getting team from db:', err)
         } else if (team) {
           console.log('TEAM:', team)
-          bot.api.users.info({token: team.access_token}, function(err, res) {
+          bot.api.users.info({token: team.access_token}, {user: message.user}, function(err, res) {
         if (err) {
           console.log('err getting user info:', slack.config)
         } else {
-          console.log('user info res',res)
+          console.log('=======user info res',res)
         }
       })
         }

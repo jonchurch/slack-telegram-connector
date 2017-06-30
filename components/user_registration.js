@@ -16,6 +16,7 @@ module.exports = function(controller) {
 
             var new_team = false;
             if (!team) {
+              console.log('====PAYLOAD ACCESS TOKEN', payload)
                 team = {
                     id: payload.identity.team_id,
                     createdBy: payload.identity.user_id,
@@ -25,7 +26,7 @@ module.exports = function(controller) {
                 };
               
                 var new_team= true;
-            } else {}
+            }
               var testbot = controller.spawn(team)
               console.log('payload.token: ',payload.access_token)
               testbot.api.users.list({token: payload.access_token}, function(err, res) {
@@ -67,10 +68,7 @@ module.exports = function(controller) {
                             }
                         }
                     });
-            }
-
-
-        });
+            });
     });
 
 
