@@ -34,7 +34,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
           //api call to get user from slack
           next()
         } else {
-          req.body.event.username = user.real_name
+          req.body.event.real_name = user.real_name
         }
 
       })
@@ -44,7 +44,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
   
   webserver.use(function(req, res, next) {
     if (req.body && req.body.event && req.body.event.user) {
-      if (! req.body.event.username) {
+      if (! req.body.event.real_name) {
       }
     }
     next()
