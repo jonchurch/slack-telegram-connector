@@ -8,19 +8,23 @@ module.exports = function(telegram, slack) {
  telegram.on('message_received', function(bot, message) {
    console.log(message)
    var name = message.profile.fn + ' ' + message.profile.ln
-   // name = name.toLowerCase() 
+   name = name.toLowerCase() 
    var slack_message = {
-     // text: '',
-      "attachments": [
-        {
-            "fallback": "Required plain-text summary of the attachment.",
-            
-            "author_name": message.profile.fn + message.profile.ln,
-            // "title": name,
-            text: message.text,
-        }
-    ]
+      text: message.text,
+     username: name,
+     footer: '_sent from telegram_'
    }
+//    var slack_message = {
+//       "attachments": [
+//         {
+//             "fallback": "Required plain-text summary of the attachment.",
+            
+//             "author_name": message.profile.fn + message.profile.ln,
+//             // "title": name,
+//             text: message.text,
+//         }
+//     ]
+//    }
    // console.log(slack_message)
    
    
