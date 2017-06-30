@@ -24,14 +24,26 @@ module.exports = function(controller) {
                 };
                 var new_team= true;
               var testbot = controller.spawn(team)
-              console.log('payload.token: ',payload.token)
-              testbot.api.users.list({token: payload.token}, function(err, res) {
+              console.log('payload.token: ',payload.access_token)
+              testbot.api.users.list({token: payload.access_token}, function(err, res) {
                 if (err) {
                   console.log('ERROR GETTING USER LIST', err)
                   return
                 } 
                 if (res) {
-                  console.log(res)
+                  console.log(res.members[0].profile)
+                  for (var i = 0; i , res.members.length; i += 1) {
+                    var element = res.members[i]
+                    var user = {
+                      id: element.id,
+                      username: element.name,
+                      is_bot: element.is_bot,
+                      real_name: element.profile.real_name
+                    }
+                    controller.storage.users.save(user, function(err) {
+                      if (err) {console.log('error saving user to db!', err)}
+                    })
+                  }
                 }
                 
               })
