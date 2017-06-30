@@ -2,6 +2,7 @@ var debug = require('debug')('botkit:telegram');
 var request = require('request')
 
 module.exports = function(webserver, telegram_controller, slack_controller) {
+  console.log('setup webhooks!')
 
   webserver.get('/test', function(req, res) { res.send('ok')})
   
@@ -18,7 +19,7 @@ module.exports = function(webserver, telegram_controller, slack_controller) {
       
       // log any requests that hit our webhook post route
      // we are hoping to see telegram events there
-        // console.log('INCOMING REQUEST BODY!', req.body)
+         console.log('INCOMING REQUEST BODY!', req.body)
         var bot = telegram_controller.spawn({});
 
         // Now, pass the webhook into be processed
