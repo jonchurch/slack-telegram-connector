@@ -35,12 +35,17 @@ module.exports = function(telegram, slack) {
   
   
   slack.on('ambient', function(bot, message) {
+    console.log('ambien!')
     // I need to get slack user name to post into telegram
     console.log(message)
     if (!message.username) {
       slack.storage.teams.get(message.team, function(err, team) {
         if (err) {
           console.log('err getting team from db:', err)
+          return
+        }else if(!team) {
+          console.log('team is not setup!')
+          return
         } else if (team) {
           console.log('TEAM:', team)
           bot.api.users.info({token: team.access_token, user: message.user}, function(err, res) {

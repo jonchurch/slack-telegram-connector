@@ -14,7 +14,7 @@ var telegram_controller = Botkit.telegrambot({
 telegram_controller.startTicking()
 
 var slack_options = {
-    json_file_store: './app/',
+    json_file_store: './app/.db/',
     clientId: process.env.slack_client_id,
     clientSecret: process.env.slack_client_secret,
     debug: true,
