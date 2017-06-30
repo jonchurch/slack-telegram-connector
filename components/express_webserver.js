@@ -3,7 +3,10 @@ var bodyParser = require('body-parser');
 var querystring = require('querystring');
 var debug = require('debug')('botkit:webserver');
 var request = require('request')
-var emoji = require('emoji-name-map')
+var EmojiConverter = require('emoji-js')
+var emoji = new EmojiConverter()
+emoji.replace_mode = 'unified';
+emoji.allow_native = true;
 
 module.exports = function(telegram_controller, slack_controller, bot) {
 
@@ -49,8 +52,9 @@ module.exports = function(telegram_controller, slack_controller, bot) {
   })
   
   webserver.use(function emojiMapper(req, res, next) {
-    if (req.body && req.body.event ) {
-      
+    if (req.body && req.body.event && req.body.event.text) {
+      req.body.event.text = emoji.replace_colons(req.body.event.text)
+      console.log('req.body.event.text:', req.body.event.text)
     }
     next()
   })
