@@ -1,6 +1,6 @@
 First remix this project!
 
-Then you will need to create a slack app. Make sure that you are signed into your slack team on the website
+Then you will need to create a slack app. Make sure that you are signed into your slack team from the web.
 
 Go [here and create a new slack app](https://api.slack.com/apps?new_app=1).
 
@@ -30,3 +30,17 @@ Then click 'Basic Information' on the left side menu.
 Copy Paste your ClientId and ClientSecret into your .env file in your glitch project.
 
 Next, go [here](https://api.slack.com/custom-integrations) and scroll down to click the green 'Setup and Incoming Webhook' button. 
+
+Then click Add Integration. Choose the channel you would like telegram to post in and save the integration. 
+
+Copy Paste the Webhook Url it gives you into your glitch .env file
+
+Now visit your glitch project's url + `/login` like `https:<YOUR GLITCH PROJECT URL>glitch.me/login` and authorize the app with your slack team.
+
+Now you need to setup the telegram bot! After setting your bot up, and turning off privacy mode, copy paste your telegram token into your .env
+
+
+Enter your telegram webook url in .env with your glitch project url `https://<YOUR GLITCH PROJECT URL>glitch.me/telegram/receive`
+
+Now its a little tricky to get your telegram group id, you need to invite your bot to the group you want it in, and then send a message to the group. You will have to check the logs of your glitch project to see the chat id
+
