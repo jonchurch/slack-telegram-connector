@@ -28,8 +28,9 @@ module.exports = function(telegram_controller, slack_controller, bot) {
           next(err)
         } else if (!user) {
           //api call to get user from slack
+          next()
         } else {
-          console.log('=========user' ,user)
+          req.body.event.username = user.real_name
         }
 
       })

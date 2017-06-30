@@ -36,10 +36,13 @@ module.exports = function(telegram, slack) {
   
   slack.on('ambient', function(bot, message) {
     // I need to get slack user name to post into telegram
-    bot.api.users.list
+    var tel_message ={
+      channel: process.env.TELEGRAM_CHANNEL,
+      text: 145647720
+    } message.username + ': ' + message.text
     console.log('Slack ambient!\n', message)
     telegramBot.reply({
       channel: '145647720' 
-    }, message.text)
+    }, message)
   })
 }

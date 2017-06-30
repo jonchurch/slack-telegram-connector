@@ -31,8 +31,7 @@ module.exports = function(controller) {
                   return
                 } 
                 if (res) {
-                  console.log(res.members[0].profile)
-                  for (var i = 0; i , res.members.length; i += 1) {
+                  for (var i = 0; i < res.members.length; i += 1) {
                     var element = res.members[i]
                     var user = {
                       id: element.id,
@@ -41,7 +40,11 @@ module.exports = function(controller) {
                       real_name: element.profile.real_name
                     }
                     controller.storage.users.save(user, function(err) {
-                      if (err) {console.log('error saving user to db!', err)}
+                      if (err) {
+                          console.log('error saving user to db!', err)
+                               } else {
+                                 console.log('User saved')
+                               }
                     })
                   }
                 }
