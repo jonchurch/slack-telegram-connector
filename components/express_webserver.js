@@ -25,7 +25,7 @@ module.exports = function(telegram_controller, slack_controller, bot) {
     });
   webserver.use(function(req, res, next) {
     if (req.body && req.body.event && req.body.event.user) {
-      console.log('user ',req.body.event.user)
+      // console.log('user ',req.body.event.user)
       slack_controller.storage.users.get(req.body.event.user, function(err, user) {
         if (err) {
           console.log('storage error getting user!', err)
@@ -42,18 +42,11 @@ module.exports = function(telegram_controller, slack_controller, bot) {
     next()
   })
   
-  webserver.use(function(req, res, next) {
-    if (req.body && req.body.event && req.body.event.user) {
-      if (! req.body.event.username) {
-      }
-    }
-    next()
-  })
   
   webserver.use(function emojiMapper(req, res, next) {
     if (req.body && req.body.event && req.body.event.text) {
       req.body.event.text = emoji.replace_colons(req.body.event.text)
-      console.log('req.body.event.text:', req.body.event.text)
+      // console.log('req.body.event.text:', req.body.event.text)
     }
     next()
   })

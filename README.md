@@ -42,5 +42,13 @@ Now you need to setup the telegram bot! After setting your bot up, and turning o
 
 Enter your telegram webook url in .env with your glitch project url `https://<YOUR GLITCH PROJECT URL>glitch.me/telegram/receive`
 
-Now its a little tricky to get your telegram group id, you need to invite your bot to the group you want it in, and then send a message to the group. You will have to check the logs of your glitch project to see the chat id
+Now its a little tricky to get your telegram group id, you need to invite your bot to the group you want it in, and then send a message to the group. You will have to check the logs of your glitch project to see the chat id.
+
+After sending a telegram message to the group, look for this in your logs:
+
+`=====GOT MESSAGE FROM TELEGRAM CHANNEL: -238789099` 
+
+Copy the number (it may or may not be a negative number)
+
+Paste it into your .env, and you should be ready to go!
 

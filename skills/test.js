@@ -6,7 +6,7 @@ module.exports = function(telegram, slack) {
 })
   var telegramBot = telegram.spawn({})
  telegram.on('message_received', function(bot, message) {
-   console.log(message)
+   console.log('=====GOT MESSAGE FROM TELEGRAM CHANNEL:', message.channel)
    var name = message.profile.fn + ' ' + message.profile.ln
    name = name.toLowerCase() 
    var slack_message = {
@@ -14,19 +14,6 @@ module.exports = function(telegram, slack) {
      username: name,
      footer: '_sent from telegram_'
    }
-//    var slack_message = {
-//       "attachments": [
-//         {
-//             "fallback": "Required plain-text summary of the attachment.",
-            
-//             "author_name": message.profile.fn + message.profile.ln,
-//             // "title": name,
-//             text: message.text,
-//         }
-//     ]
-//    }
-   // console.log(slack_message)
-   
    
    slackBot.sendWebhook(slack_message, function(err, res) {
      if (err) console.log('Uh oh!\n', err)
@@ -35,9 +22,8 @@ module.exports = function(telegram, slack) {
   
   
   slack.on('ambient', function(bot, message) {
-    console.log('ambien!')
     // I need to get slack user name to post into telegram
-    console.log(message)
+    // console.log(message)
     if (!message.username) {
       slack.storage.teams.get(message.team, function(err, team) {
         if (err) {
@@ -47,12 +33,12 @@ module.exports = function(telegram, slack) {
           console.log('team is not setup!')
           return
         } else if (team) {
-          console.log('TEAM:', team)
+          // console.log('TEAM:', team)
           bot.api.users.info({token: team.access_token, user: message.user}, function(err, res) {
         if (err) {
           console.log('err getting user info:', slack.config)
         } else {
-          console.log('USER INFO REQUEST', res)
+          // console.log('USER INFO REQUEST', res)
           var user = {
                       id: res.user.id,
                       username: res.user.name,

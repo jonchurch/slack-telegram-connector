@@ -6,9 +6,7 @@ var debug = require('debug')('botkit:main');
 // var os = require('os');
 
 var telegram_controller = Botkit.telegrambot({
-
-    // json_filestore: `./app/db`,
-  debug: true,
+  // debug: true,
     access_token: process.env.telegram_token
 });
 telegram_controller.startTicking()
@@ -17,7 +15,7 @@ var slack_options = {
     json_file_store: './.data/',
     clientId: process.env.slack_client_id,
     clientSecret: process.env.slack_client_secret,
-    debug: true,
+    // debug: true,
     incoming_webhook: process.env.slack_webhook_url,
     scopes: ['channels:history', 'users:read'],
 };

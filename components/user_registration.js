@@ -16,7 +16,7 @@ module.exports = function(controller) {
 
             var new_team = false;
             if (!team) {
-              console.log('====PAYLOAD ACCESS TOKEN', payload)
+              // console.log('====PAYLOAD ACCESS TOKEN', payload)
                 team = {
                     id: payload.identity.team_id,
                     createdBy: payload.identity.user_id,
@@ -28,7 +28,7 @@ module.exports = function(controller) {
                  new_team= true;
             }
               var testbot = controller.spawn(team)
-              console.log('payload.token: ',payload.access_token)
+              // console.log('payload.token: ',payload.access_token)
               testbot.api.users.list({token: payload.access_token}, function(err, res) {
                 if (err) {
                   console.log('ERROR GETTING USER LIST', err)
@@ -47,7 +47,7 @@ module.exports = function(controller) {
                       if (err) {
                           console.log('error saving user to db!', err)
                                } else {
-                                 console.log('User saved')
+                                 // console.log('User saved')
                                }
                     })
                   }
@@ -75,7 +75,7 @@ module.exports = function(controller) {
     controller.on('create_team', function(bot, team) {
       bot.api.users.list({}, function(err, res) {
         if (err) console.log('======ERRR',err)
-        console.log('========res',res)
+        // console.log('========res',res)
       })
 
         debug('Team created:', team);
