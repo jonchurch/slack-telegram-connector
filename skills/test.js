@@ -24,6 +24,7 @@ module.exports = function(telegram, slack) {
   slack.on('ambient', function(bot, message) {
     // I need to get slack user name to post into telegram
     // console.log(message)
+    if (message.channel === process.env.slack_channel) {
     if (!message.username) {
       slack.storage.teams.get(message.team, function(err, team) {
         if (err) {
@@ -68,5 +69,6 @@ module.exports = function(telegram, slack) {
       parse_mode: 'Markdown'
     } 
     telegramBot.say(tel_message)
+    }
   })
 }
