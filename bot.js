@@ -15,7 +15,7 @@ var slack_options = {
     json_file_store: './.data/',
     clientId: process.env.slack_client_id,
     clientSecret: process.env.slack_client_secret,
-    // debug: true,
+    debug: true,
     incoming_webhook: process.env.slack_webhook_url,
     scopes: ['channels:history', 'users:read'],
 };

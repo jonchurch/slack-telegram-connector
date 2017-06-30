@@ -19,7 +19,7 @@ module.exports = function(webserver, telegram_controller, slack_controller) {
       
       // log any requests that hit our webhook post route
      // we are hoping to see telegram events there
-         console.log('INCOMING REQUEST BODY!', req.body)
+         // console.log('INCOMING REQUEST BODY!', req.body)
         var bot = telegram_controller.spawn({});
 
         // Now, pass the webhook into be processed
@@ -30,7 +30,7 @@ module.exports = function(webserver, telegram_controller, slack_controller) {
   webserver.post('/slack/receive', function(req, res) {
     res.status(200)  
     // res.send('ok')
-    // console.log('REQ BODY\n',req.body)
+    console.log('REQ BODY\n',req.body)
     slack_controller.handleWebhookPayload(req, res)
   })
 
