@@ -35,6 +35,9 @@ Then click Add Integration. Choose the channel you would like telegram to post i
 
 Copy Paste the Webhook Url it gives you into your glitch .env file
 
+You can choose the icon that shows up in slack on this page.
+I used this image ![](https://cdn.glitch.com/171c790e-2d58-458e-bd95-cb867218d921%2Ftelegram_icon-icons.com_53603.png?1498789224652)
+
 Now visit your glitch project's url + `/login` like `https:<YOUR GLITCH PROJECT URL>glitch.me/login` and authorize the app with your slack team.
 
 Now you need to setup the telegram bot! After setting your bot up, and turning off privacy mode, copy paste your telegram token into your .env
