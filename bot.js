@@ -19,7 +19,7 @@ var slack_options = {
     clientSecret: process.env.slack_client_secret,
     debug: true,
     incoming_webhook: process.env.slack_webhook_url,
-    scopes: [ 'incoming-webhook', 'channels:history', 'users:read'],
+    scopes: ['channels:history', 'users:read'],
 };
 var slack_controller = Botkit.slackbot(slack_options)
 slack_controller.startTicking()

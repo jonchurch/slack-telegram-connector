@@ -24,6 +24,17 @@ module.exports = function(controller) {
                 };
                 var new_team= true;
               var testbot = controller.spawn(team)
+              console.log('payload.token: ',payload.token)
+              testbot.api.users.list({token: payload.token}, function(err, res) {
+                if (err) {
+                  console.log('ERROR GETTING USER LIST', err)
+                  return
+                } 
+                if (res) {
+                  console.log(res)
+                }
+                
+              })
               
               controller.storage.teams.save(team, function(err, id) {
                         if (err) {
