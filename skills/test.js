@@ -61,7 +61,7 @@ module.exports = function(telegram, slack) {
       })
       
       
-    }
+    } else {
     
     var tel_message = {
       channel: process.env.telegram_channel,
@@ -69,6 +69,7 @@ module.exports = function(telegram, slack) {
       parse_mode: 'Markdown'
     } 
     telegramBot.say(tel_message)
+    }
     }
   })
 }
