@@ -15,6 +15,7 @@ module.exports = function(telegram, slack) {
      footer: '_sent from telegram_'
    }
    
+
    slackBot.sendWebhook(slack_message, function(err, res) {
      if (err) console.log('Uh oh!\n', err)
    })
