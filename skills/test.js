@@ -13,7 +13,7 @@ module.exports = function(telegram, slack) {
    var slack_message = {
       text: message.text,
      username: name,
-     footer: '_sent from telegram_'
+     // footer: '_sent from telegram_'
    }
    
 
