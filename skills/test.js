@@ -6,8 +6,8 @@ module.exports = function(telegram, slack) {
 })
   var telegramBot = telegram.spawn({})
   
- telegram.on('message_received', function(bot, message) {
-   console.log('=====GOT MESSAGE FROM TELEGRAM CHANNEL:', message.channel)
+ telegram.on('message_received', function(botot, message) {
+   console.log('=====GOT MESSAGE FROM TELEGRAM CHANNEL:', message)
    var name = message.profile.fn + ' ' + message.profile.ln
    name = name.toLowerCase() 
    var slack_message = {
