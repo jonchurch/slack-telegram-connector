@@ -6,7 +6,7 @@ var debug = require('debug')('botkit:main');
 // var os = require('os');
 
 var telegram_controller = Botkit.telegrambot({
-  // debug: true,
+  debug: true,
     access_token: process.env.telegram_token
 });
 telegram_controller.startTicking()
